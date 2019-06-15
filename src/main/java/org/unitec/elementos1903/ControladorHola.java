@@ -18,6 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorHola {
     @GetMapping("/hola")
     public String hola(){
-        return "¡Mi Primer Servicio REST con Spring!☻";
+        return "Mi servidor web y soy Fernanda ☻";
     }
 }
