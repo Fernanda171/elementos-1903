@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class ControladorProfesor {
    //Método para Guardar
     @Autowired
     RepoProfesor repoProfe;
+    
     @PostMapping("/profesor")
     public Estatus guardar(@RequestBody String json) throws Exception{
         //Primero vamos a recibir el json del cliente web y lo transformamos a un objeto Java con clase ObjectMapper
@@ -37,8 +39,8 @@ public class ControladorProfesor {
              e.setSuccess(true);
              return e;
     }
-    @GetMapping("/profesor")
-    public List<Profesor> buscarTodos(){
+    @GetMapping("/profesor/{id}")
+    public Profesor buscarPorId(@PathVariable Integer id)
         return repoProfe.findAll();
     }
 }
